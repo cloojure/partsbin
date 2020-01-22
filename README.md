@@ -96,12 +96,12 @@ The right way to test this could be one of the following:
 :Option 2: Do this once
 (def datomic-conn (::datomic/connection system))
 ;Do this as much as you want.
-(doit conn arg)
+(doit datomic-conn arg)
 ```
 
 ## Top Level Utility Methods
 
-Currently, there are two small nses that I use pervasively when building systems that I've captured here. 
+Currently, there are two small namespaces that I use pervasively when building systems that I've captured here. 
 
 ### partsbin.core
 The first is `partsbin.core`, which declares a simple protocol along the lines of what Component does along with some helper methods for modifying the default system configuration. For a similar effort see [integrant-repl](https://github.com/weavejester/integrant-repl). The main difference I take in my approach is that I use an atom along with a simple protocol to manage the system rather than a dynamic var so that it becomes easier to localize the system (or have many) versus a single (start), (stop), etc. set of functions. If you like those other systems better, feel free to use them.
